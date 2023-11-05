@@ -195,11 +195,11 @@ with col2:
     st.metric("Rainy Days", value=rainy_days)
 
 if interval_analysis == 'Yearly':
-    yearly_co_rain_df = dongsi_df.groupby([dongsi_df['date'].dt.year, 'station'])['CO', 'RAIN'].mean().reset_index()
+    yearly_co_rain_df = dongsi_df.groupby([dongsi_df['date'].dt.year, 'station'])[['CO', 'RAIN']].mean().reset_index()
     yearly_co_rain_df['date'] = yearly_co_rain_df['date'].astype(str)
     plot_co_rain_dongsi(yearly_co_rain_df, 'CO', 'RAIN')
 elif interval_analysis == 'Monthly':
-    monthly_co_rain_df = dongsi_df.groupby([dongsi_df['date'].dt.to_period("M"), 'station'])['CO', 'RAIN'].mean().reset_index()
+    monthly_co_rain_df = dongsi_df.groupby([dongsi_df['date'].dt.to_period("M"), 'station'])[['CO', 'RAIN']].mean().reset_index()
     monthly_co_rain_df['date'] = monthly_co_rain_df['date'].astype(str)
     plot_co_rain_dongsi(monthly_co_rain_df, 'CO', 'RAIN')
 elif interval_analysis == 'Daily':
